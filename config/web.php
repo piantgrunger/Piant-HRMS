@@ -4,21 +4,45 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'basic',
+    'name' => 'HRMS',
+    // set target language to be Russian
+  'language' => 'id-ID',
+
+  // set source language to be English
+  'sourceLanguage' => 'en-US',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'y2B_PhmMeo1G4hPY0dO7KfNled31dl6L',
+
         ],
-        'cache' => [
+        'view' => [
+          'theme' => [
+              'pathMap' => [
+                 '@app/views' => '@app/templates/views'
+           ],
+         ],
+        ],
+
+        'urlManager' => [
+       'class' => 'yii\web\UrlManager',
+       // Hide index.php
+       'showScriptName' => false,
+       // Use pretty URLs
+       'enablePrettyUrl' => true,
+       'rules' => [
+       ],
+   ],
+      'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
             'identityClass' => 'app\models\User',
             //'enableAutoLogin' => true,
             'enableSession' => true,
-            'authTimeout' => 60*30, 
+            'authTimeout' => 60*30,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -77,6 +101,21 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
+        'generators' => [
+        'myCrud' => [
+            'class' => 'app\templates\crud\Generator',
+            'templates' => [
+                'my' => '@app/Templates/crud/default',
+            ]
+        ],
+        'mymodel' => [
+            'class' => 'app\templates\model\Generator',
+            'templates' => [
+                'my' => '@app/Templates/model/default',
+            ]
+        ]
+
+    ],
     ];
 }
 

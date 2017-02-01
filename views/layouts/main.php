@@ -5,6 +5,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
+use kartik\nav\NavX;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\widgets\Alert;
@@ -28,29 +29,47 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'HRMS Program',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-	
-	$menuItems = [
+
+	$menuItems1 = [
 		['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+    [
+         'label' => 'Master',
+         'items' => [
+              ['label' => 'Organisasi', 'url' => '#','items'=>[
+                ['label'=>'Divisi','url'=>['/divisi/index']]
+              ],
+
+             ],
+
+         ],
+     ],
 	];
+  if (!Yii::$app->user->isGuest) {
+  echo NavX::widget([
+      'options' => ['class' => 'navbar-nav navbar-left'],
+      'items' => $menuItems1,
+  ]);
+}
+
+
+
 	if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
 		$menuItems[] = [
-			'label' => 'Logout (' . Yii::$app->user->identity->username . ')', 
+			'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
 			'url' => ['/site/logout'],
 			'linkOptions' => ['data-method' => 'post'],
 		];
 	}
-	
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
