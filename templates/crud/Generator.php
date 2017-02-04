@@ -49,7 +49,7 @@ class Generator extends \yii\gii\Generator
      */
     public function getName()
     {
-        return 'CRUD Generator';
+        return 'CRUD Generator HRMS';
     }
 
     /**
@@ -231,6 +231,8 @@ class Generator extends \yii\gii\Generator
     public function generateActiveField($attribute)
     {
         $tableSchema = $this->getTableSchema();
+
+
         if ($tableSchema === false || !isset($tableSchema->columns[$attribute])) {
             if (preg_match('/^(password|pass|passwd|passcode)$/i', $attribute)) {
                 return "\$form->field(\$model, '$attribute')->passwordInput()";
@@ -243,13 +245,15 @@ class Generator extends \yii\gii\Generator
             return "\$form->field(\$model, '$attribute')->checkbox()";
         } elseif ($column->type === 'text') {
             return "\$form->field(\$model, '$attribute')->textarea(['rows' => 6])";
-        } else {
+        } 
+        
+        else {
             if (preg_match('/^(password|pass|passwd|passcode)$/i', $column->name)) {
                 $input = 'passwordInput';
             } else {
                 $input = 'textInput';
             }
-            if (is_array($column->enumValues) && count($column->enumValues) > 0) {
+               if (is_array($column->enumValues) && count($column->enumValues) > 0) {
                 $dropDownOptions = [];
                 foreach ($column->enumValues as $enumValue) {
                     $dropDownOptions[$enumValue] = Inflector::humanize($enumValue);
