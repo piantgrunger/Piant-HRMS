@@ -11,6 +11,7 @@
                     ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii'],'visible' => !Yii::$app->user->isGuest],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
+                        'visible' => !Yii::$app->user->isGuest,
                         'label' => 'Master',
                         'icon' => 'fa fa-share',
                         'url' => '#',
@@ -22,7 +23,7 @@
                                 'url' => '#',
                                 'items' => [
                                     ['label' => 'Divisi', 'icon' => 'fa fa-circle-o', 'url' => "@web/divisi/index",],
-
+                                    ['label' => 'Departemen', 'icon' => 'fa fa-circle-o', 'url' => "@web/departemen/index",], 
                                 ],
                             ],
                         ],
