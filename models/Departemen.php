@@ -7,6 +7,7 @@ use Yii;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
+use app\models\Divisi;
 
 
 /**
@@ -27,6 +28,8 @@ class Departemen extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    
+     
 
 
     public function behaviors()
@@ -72,7 +75,7 @@ class Departemen extends \yii\db\ActiveRecord
     {
         return [
             'id_departemen' => Yii::t('app', 'Id Departemen'),
-            'id_divisi' => Yii::t('app', 'Id Divisi'),
+            'id_divisi' => Yii::t('app', 'Divisi'),
             'kode_departemen' => Yii::t('app', 'Kode Departemen'),
             'nama_departemen' => Yii::t('app', 'Nama Departemen'),
             'ket' => Yii::t('app', 'Ket'),
@@ -86,6 +89,21 @@ class Departemen extends \yii\db\ActiveRecord
      */
     public function getDivisi()
     {
-        return $this->hasOne(TbMDivisi::className(), ['id_divisi' => 'id_divisi']);
+        return $this->hasOne(Divisi::className(), ['id_divisi' => 'id_divisi']);
     }
+    public function getKode_Divisi()
+    {
+        return $this->divisi->kode_divisi;
+    }
+
+    public function getNama_Divisi()
+    {
+        return $this->divisi->nama_divisi;
+    }
+
+    public function getId_divisi()
+    {
+        return $this->divisi->id_divisi;
+    }
+    
 }

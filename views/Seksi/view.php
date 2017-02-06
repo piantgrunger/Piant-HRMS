@@ -4,22 +4,22 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Departemen */
+/* @var $model app\models\Seksi */
 
-$this->title = $model->kode_departemen;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Daftar Departemen'), 'url' => ['index']];
+$this->title = $model->kode_seksi;
+$this->params['breadcrumbs'][] = ['label' => 'Daftar Seksi', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="departemen-view">
+<div class="seksi-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Ubah'), ['update', 'id' => $model->id_departemen], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Hapus'), ['delete', 'id' => $model->id_departemen], [
+        <?= Html::a('Ubah', ['update', 'id' => $model->id_seksi], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Hapus', ['delete', 'id' => $model->id_seksi], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Yii::t('app', 'Apakah Anda yakin ingin menghapus item ini??'),
+                'confirm' => 'Apakah Anda yakin ingin menghapus item ini??',
                 'method' => 'post',
             ],
         ]) ?>
@@ -30,8 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'kode_Divisi',
             'nama_Divisi',
-            'kode_departemen',
-            'nama_departemen',
+            'kode_Departemen',
+            'nama_Departemen',
+            'kode_seksi',
+            'nama_seksi',
             'ket:ntext',
             'created_at',
             'updated_at',
