@@ -28,8 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= "<?= " ?>Html::encode($this->title) ?></h1>
 
     <p>
-        <?= "<?= " ?>Html::a(<?= $generator->generateString('Update') ?>, ['update', <?= $urlParams ?>], ['class' => 'btn btn-primary']) ?>
-        <?= "<?= " ?>Html::a(<?= $generator->generateString('Delete') ?>, ['delete', <?= $urlParams ?>], [
+        <?= "<?= " ?>Html::a(<?= $generator->generateString('Ubah') ?>, ['update', <?= $urlParams ?>], ['class' => 'btn btn-primary']) ?>
+        <?= "<?= " ?>Html::a(<?= $generator->generateString('Hapus') ?>, ['delete', <?= $urlParams ?>], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => <?= $generator->generateString('Apakah Anda yakin ingin menghapus item ini??') ?>,

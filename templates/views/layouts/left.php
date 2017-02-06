@@ -24,6 +24,7 @@
                                 'items' => [
                                     ['label' => 'Divisi', 'icon' => 'fa fa-circle-o', 'url' => "@web/divisi/index",],
                                     ['label' => 'Departemen', 'icon' => 'fa fa-circle-o', 'url' => "@web/departemen/index",], 
+                                        ['label' => 'Seksi', 'icon' => 'fa fa-circle-o', 'url' => "@web/seksi/index",], 
                                 ],
                             ],
                         ],
