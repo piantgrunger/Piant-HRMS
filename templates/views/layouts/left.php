@@ -27,6 +27,8 @@
                                         ['label' => 'Seksi', 'icon' => 'fa fa-circle-o', 'url' => "@web/seksi/index",], 
                                 ],
                             ],
+                           ['label' => 'Jns Absen', 'icon' => 'fa fa-circle-o', 'url' => "@web/jns_absen/index",],
+                           
                         ],
                     ],
                 ],

@@ -1,8 +1,22 @@
 <?php
 
+
 use yii\helpers\Html;
-use yii\grid\GridView;
-use yii\widgets\Pjax;
+use kartik\grid\GridView;
+ use kartik\export\ExportMenu;
+$gridColumns=[['class' => 'yii\grid\SerialColumn'],
+            'kode_Divisi',
+            'nama_Divisi',
+    
+            'kode_departemen',
+            'nama_departemen',
+            'ket:ntext',
+            // 'created_at',
+            // 'updated_at',
+
+         ['class' => 'yii\grid\ActionColumn'],];
+echo ExportMenu::widget(['dataProvider' => $dataProvider,'columns' => $gridColumns]);
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\DepartemenSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -13,7 +27,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="departemen-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
@@ -23,20 +36,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'kode_Divisi',
-            'nama_Divisi',
-            
-            'kode_departemen',
-            'nama_departemen',
-            'ket:ntext',
-            // 'created_at',
-            // 'updated_at',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
+        'columns' => $gridColumns,      
+        'responsive'=>true,
+        'hover'=>true,
+         'resizableColumns'=>true,
     ]); ?>
-    <?php Pjax::end(); ?>
 </div>

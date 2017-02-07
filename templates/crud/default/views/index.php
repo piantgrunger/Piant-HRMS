@@ -13,34 +13,13 @@ $model = $generator->modelClass;
 echo "<?php\n";
 ?>
 
+
 use yii\helpers\Html;
-use <?= $generator->indexWidgetType === 'grid' ? "yii\\grid\\GridView" : "yii\\widgets\\ListView" ?>;
+use <?= $generator->indexWidgetType === 'grid' ? "kartik\\grid\\GridView" : "yii\\widgets\\ListView" ?>;
 <?= $generator->enablePjax ? 'use yii\widgets\Pjax;' : '' ?>
+<?=" use kartik\\export\\ExportMenu;";?>
 
-/* @var $this yii\web\View */
-<?= !empty($generator->searchModelClass) ? "/* @var \$searchModel " . ltrim($generator->searchModelClass, '\\') . " */\n" : '' ?>
-/* @var $dataProvider yii\data\ActiveDataProvider */
-
-$this->title = <?= $generator->generateString('Daftar './*Inflector::pluralize*/(Inflector::camel2words(StringHelper::basename($generator->modelClass)))) ?>;
-$this->params['breadcrumbs'][] = $this->title;
-?>
-<div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-index">
-
-    <h1><?= "<?= " ?>Html::encode($this->title) ?></h1>
-<?= $generator->enablePjax ? "    <?php Pjax::begin(); ?>\n" : '' ?>
-<?php if(!empty($generator->searchModelClass)): ?>
-<?= "    <?php " . ($generator->indexWidgetType === 'grid' ? "// " : "") ?>echo $this->render('_search', ['model' => $searchModel]); ?>
-<?php endif; ?>
-
-    <p>
-        <?= "<?= " ?>Html::a(<?= $generator->generateString(Inflector::camel2words(StringHelper::basename($generator->modelClass).' Baru')) ?>, ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-<?php if ($generator->indexWidgetType === 'grid'): ?>
-    <?= "<?= " ?>GridView::widget([
-        'dataProvider' => $dataProvider,
-        <?= !empty($generator->searchModelClass) ? "'filterModel' => \$searchModel,\n        'columns' => [\n" : "'columns' => [\n"; ?>
-            ['class' => 'yii\grid\SerialColumn'],
+<?php echo'$gridColumns=[[\'class\' => \'yii\grid\SerialColumn\'], ';?>
 
 <?php
 $count = 0;
@@ -71,8 +50,41 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
 }
 ?>
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
+        <?php echo  " ['class' => 'yii\grid\ActionColumn'],];"?>
+<?php  
+ echo ' echo ExportMenu::widget(['.
+    '\'dataProvider\' => $dataProvider,'.
+    '\'columns\' => $gridColumns';
+   echo "]);";
+?>
+
+
+/* @var $this yii\web\View */
+<?= !empty($generator->searchModelClass) ? "/* @var \$searchModel " . ltrim($generator->searchModelClass, '\\') . " */\n" : '' ?>
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = <?= $generator->generateString('Daftar './*Inflector::pluralize*/(Inflector::camel2words(StringHelper::basename($generator->modelClass)))) ?>;
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-index">
+
+    <h1><?= "<?= " ?>Html::encode($this->title) ?></h1>
+<?= $generator->enablePjax ? "    <?php Pjax::begin(); ?>\n" : '' ?>
+<?php if(!empty($generator->searchModelClass)): ?>
+<?= "    <?php " . ($generator->indexWidgetType === 'grid' ? "// " : "") ?>echo $this->render('_search', ['model' => $searchModel]); ?>
+<?php endif; ?>
+
+    <p>
+        <?= "<?= " ?>Html::a(<?= $generator->generateString(Inflector::camel2words(StringHelper::basename($generator->modelClass).' Baru')) ?>, ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+
+<?php if ($generator->indexWidgetType === 'grid'): ?>
+    <?= "<?= " ?>GridView::widget([
+        'dataProvider' => $dataProvider,
+        <?= !empty($generator->searchModelClass) ? "'filterModel' => \$searchModel,\n        'columns' => \$gridColumns," : "'columns' => \$gridColumns, "; ?>
+        'responsive'=>true,
+        'hover'=>true,
+         'resizableColumns'=>true,    
     ]); ?>
 <?php else: ?>
     <?= "<?= " ?>ListView::widget([
