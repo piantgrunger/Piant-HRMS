@@ -8,7 +8,9 @@
             [
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
-                    ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii'],'visible' => !Yii::$app->user->isGuest],
+                    ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => '@web/gii','visible' => !Yii::$app->user->isGuest],
+                    ['label' => 'User', 'icon' => 'fa file-circle-o', 'url' => '@web/user/index','visible' => !Yii::$app->user->isGuest],
+                  
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
                         'visible' => !Yii::$app->user->isGuest,

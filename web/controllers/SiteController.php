@@ -70,9 +70,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        
-          $model = new LoginForm();
-        return $this->render('index',['model'=>$model]);
+        return $this->render('index');
     }
 
     /**
