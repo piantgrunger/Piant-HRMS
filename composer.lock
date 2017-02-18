@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e467ae81831178c6f3f534ad5871ffe8",
+    "content-hash": "64fb222084e832b54fb430236c9f2099",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -1436,12 +1436,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "d3f1298ce1d0c06355764ea7c6626407204234af"
+                "reference": "aff4b29a8b52666ed9a49b04e42c0c09f770bf35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/d3f1298ce1d0c06355764ea7c6626407204234af",
-                "reference": "d3f1298ce1d0c06355764ea7c6626407204234af",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/aff4b29a8b52666ed9a49b04e42c0c09f770bf35",
+                "reference": "aff4b29a8b52666ed9a49b04e42c0c09f770bf35",
                 "shasum": ""
             },
             "require": {
@@ -1528,7 +1528,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2017-02-04 12:51:12"
+            "time": "2017-02-08 09:08:37"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -1849,12 +1849,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-debug.git",
-                "reference": "73bc9708660ed1d09028c6967b8a1eedb83612d9"
+                "reference": "7bfe34392a176ad1c60f6f4c033263612251fa3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/73bc9708660ed1d09028c6967b8a1eedb83612d9",
-                "reference": "73bc9708660ed1d09028c6967b8a1eedb83612d9",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/7bfe34392a176ad1c60f6f4c033263612251fa3d",
+                "reference": "7bfe34392a176ad1c60f6f4c033263612251fa3d",
                 "shasum": ""
             },
             "require": {
@@ -1888,7 +1888,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2017-02-04 12:25:15"
+            "time": "2017-02-08T09:02:13+00:00"
         },
         {
             "name": "yiisoft/yii2-faker",

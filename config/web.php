@@ -17,7 +17,8 @@ $config = [
         // message source
         // 'downloadAction' => 'gridview/export/download',
         // 'i18n' => []
-    ]
+    ],
+     
    ], 
 
   // set source language to be English
