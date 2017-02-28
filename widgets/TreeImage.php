@@ -23,9 +23,9 @@ class TreeImage extends \yii\bootstrap\Widget
     public function init()
     {
         Assets::register($this->getView());
-        $this->initTreeView();
+        $this->initTreeView(0);
     }
-    protected function initTreeView()
+    protected function initTreeView($parent)
     {   
         $icon1 = '<span class="glyphicon glyphicon-'.$this->icon.'"></span>';
         $iconRoot = '<span class="glyphicon glyphicon-'.$this->iconRoot.'"></span>';
@@ -35,7 +35,7 @@ class TreeImage extends \yii\bootstrap\Widget
                 echo Html::beginTag('ul') . "\n" .Html::beginTag('li') . "\n" ;
                 echo Html::a(Yii::t('app', $iconRoot.'  '.$this->root), ['index1','parent'=>0] );   // echo '<a href="#">'.$iconRoot.'  '.$this->root.'</a>' . "\n" ;
         foreach ($dataArray as $key) {
-            if ($key['lvl'] == 0 && $currDepth == 0 ) 
+            if ($key['parent'] == $parent ) 
             {
                 echo Html::beginTag('ul') . "\n" .Html::beginTag('li') . "\n" ;
                 echo Html::a(Yii::t('app', $icon1.'  '.$key[$this->nameFieldname]), ['index1','parent'=>$key['parent']] );   // echo '<a href="#">'.$iconRoot.'  '.$this->root.'</a>' . "\n" ;

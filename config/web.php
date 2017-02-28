@@ -5,8 +5,17 @@ $params = require(__DIR__ . '/params.php');
 $config = [
     'id' => 'basic',
     'name' => 'HRMS',
-    // set target language to be Russian
+    // set target language to be Indonesia
   'language' => 'id-ID',
+    'as access' => [
+     'class' => '\hscstudio\mimin\components\AccessControl',
+     'allowActions' => [
+        // add wildcard allowed action here!
+        'site/*',
+        'debug/*',
+        'mimin/*', // only in dev mode
+    ],
+],
     
     
    'modules' => [
@@ -18,6 +27,9 @@ $config = [
         // 'downloadAction' => 'gridview/export/download',
         // 'i18n' => []
     ],
+     'mimin' => [
+        'class' => '\hscstudio\mimin\Module',
+    ],
      
    ], 
 
@@ -26,6 +38,9 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
+       'authManager' => [
+        'class' => 'yii\rbac\DbManager', // only support DbManager
+    ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'y2B_PhmMeo1G4hPY0dO7KfNled31dl6L',

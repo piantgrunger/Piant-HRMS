@@ -22,7 +22,7 @@ use yii\db\Expression;
  * @property string $created_at
  * @property string $updated_at
  */
-class Jns_absen extends \yii\db\ActiveRecord
+class jnsabsen extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

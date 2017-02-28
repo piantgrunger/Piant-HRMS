@@ -8,6 +8,7 @@ use app\models\JabatanSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * JabatanController implements the CRUD actions for Jabatan model.
@@ -17,6 +18,16 @@ class JabatanController extends Controller
     /**
      * @inheritdoc
      */
+     public function getDataBrowseJabatan()
+    {        
+     return ArrayHelper::map(
+                                Jabatan::find()
+                                        ->select([
+                                                'id_jabatan','ket_jabatan' => 'CONCAT(kode_jabatan," - ",nama_jabatan)'
+                                        ])
+                                        ->asArray()
+                                        ->all(), 'id_jabatan', 'ket_jabatan');
+    }
     public function behaviors()
     {
         return [
@@ -40,7 +51,7 @@ class JabatanController extends Controller
         $searchModel = new JabatanSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$parent);
         $Model = new Jabatan();
-      $dataTree = $Model->find()->orderBy('parent,lvl');
+      $dataTree = $Model->find()->orderBy('parent');
      
 
         return $this->render('index', [
@@ -55,7 +66,9 @@ class JabatanController extends Controller
         $searchModel = new JabatanSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams,0);
         $Model = new Jabatan();
-        $dataTree = $Model->find()->orderBy('parent,lvl');
+        $dataTree = $Model->find()->orderBy('parent');
+        
+        
 
 
         return $this->render('index', [
@@ -83,13 +96,17 @@ class JabatanController extends Controller
      */
     public function actionCreate()
     {
+         $dataBrowse = $this->getDataBrowseJabatan();
         $model = new Jabatan();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id_jabatan]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'dataBrowse' => $dataBrowse ,
+
+
             ]);
         }
     }
@@ -102,13 +119,16 @@ class JabatanController extends Controller
      */
     public function actionUpdate($id)
     {
+        
+        $dataBrowse = $this->getDataBrowseJabatan();
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id_jabatan]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'dataBrowse' => $dataBrowse ,
             ]);
         }
     }

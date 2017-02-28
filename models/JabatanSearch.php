@@ -18,7 +18,7 @@ class JabatanSearch extends Jabatan
     public function rules()
     {
         return [
-            [['id', 'parent', 'lvl'], 'integer'],
+            [['id_jabatan', 'parent' ], 'integer'],
             [['kode_jabatan', 'nama_jabatan', 'ket', 'created_at', 'updated_at'], 'safe'],
         ];
     }
@@ -59,8 +59,7 @@ class JabatanSearch extends Jabatan
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'lvl' => $this->lvl,
+            'id_jabatan' => $this->id_jabatan,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);

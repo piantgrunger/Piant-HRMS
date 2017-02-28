@@ -9,7 +9,7 @@ class m170209_021305_create_tb_m_jabatan extends Migration
     {
        
         $this->createTable(self::TABLE_NAME, [
-            'id' => $this->primaryKey(),
+            'id_jabatan' => $this->primaryKey(),
             'parent' => $this->integer()->defaultValue(0),
             'lvl' => $this->smallInteger(5)->notNull(),
             'kode_jabatan' => $this->string(50)->notNull()->unique(),
@@ -19,8 +19,6 @@ class m170209_021305_create_tb_m_jabatan extends Migration
             'updated_at'=>$this->datetime(),
 
         ]);
-        $this->createIndex('tree_NK1', self::TABLE_NAME, 'parent');
-        $this->createIndex('tree_NK4', self::TABLE_NAME, 'lvl');
         
         
         

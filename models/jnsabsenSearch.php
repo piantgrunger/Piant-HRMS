@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Jns_absen;
+use app\models\jnsabsen;
 
 /**
- * Jns_absenSearch represents the model behind the search form of `app\models\Jns_absen`.
+ * jnsabsenSearch represents the model behind the search form of `app\models\jnsabsen`.
  */
-class Jns_absenSearch extends Jns_absen
+class jnsabsenSearch extends jnsabsen
 {
     /**
      * @inheritdoc
@@ -41,7 +41,7 @@ class Jns_absenSearch extends Jns_absen
      */
     public function search($params)
     {
-        $query = Jns_absen::find();
+        $query = jnsabsen::find();
 
         // add conditions that should always apply here
 

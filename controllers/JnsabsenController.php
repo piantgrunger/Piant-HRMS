@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Jns_absen;
-use app\models\Jns_absenSearch;
+use app\models\jnsabsen;
+use app\models\jnsabsenSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * Jns_absenController implements the CRUD actions for Jns_absen model.
+ * JnsabsenController implements the CRUD actions for jnsabsen model.
  */
-class Jns_absenController extends Controller
+class JnsabsenController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class Jns_absenController extends Controller
     }
 
     /**
-     * Lists all Jns_absen models.
+     * Lists all jnsabsen models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new Jns_absenSearch();
+        $searchModel = new jnsabsenSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class Jns_absenController extends Controller
     }
 
     /**
-     * Displays a single Jns_absen model.
+     * Displays a single jnsabsen model.
      * @param integer $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class Jns_absenController extends Controller
     }
 
     /**
-     * Creates a new Jns_absen model.
+     * Creates a new jnsabsen model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Jns_absen();
+        $model = new jnsabsen();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_jns_absen]);
@@ -75,7 +75,7 @@ class Jns_absenController extends Controller
     }
 
     /**
-     * Updates an existing Jns_absen model.
+     * Updates an existing jnsabsen model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,7 +94,7 @@ class Jns_absenController extends Controller
     }
 
     /**
-     * Deletes an existing Jns_absen model.
+     * Deletes an existing jnsabsen model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +107,15 @@ class Jns_absenController extends Controller
     }
 
     /**
-     * Finds the Jns_absen model based on its primary key value.
+     * Finds the jnsabsen model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Jns_absen the loaded model
+     * @return jnsabsen the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Jns_absen::findOne($id)) !== null) {
+        if (($model = jnsabsen::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Jns_absenSearch */
+/* @var $model app\models\jnsabsenSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="jns-absen-search">
+<div class="jnsabsen-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],

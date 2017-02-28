@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Jns_absen */
+/* @var $model app\models\jnsabsen */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="jns-absen-form">
+<div class="jnsabsen-form">
 
     <?php $form = ActiveForm::begin(); ?>
         <?= $form->errorSummary($model) ?> <!-- ADDED HERE -->

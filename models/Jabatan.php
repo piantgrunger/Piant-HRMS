@@ -12,7 +12,7 @@ use yii\db\Expression;
 /**
  * This is the model class for table "tb_m_jabatan".
  *
- * @property int $id
+ * @property int $jabatan_id
  * @property int $parent
  * @property int $lvl
  * @property string $kode_jabatan
@@ -54,7 +54,7 @@ class Jabatan extends \yii\db\ActiveRecord
     {
         return [
             [['parent', 'lvl'], 'integer'],
-            [['lvl', 'kode_jabatan', 'nama_jabatan'], 'required'],
+            [[ 'kode_jabatan', 'nama_jabatan'], 'required'],
             [['ket'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['kode_jabatan', 'nama_jabatan'], 'string', 'max' => 50],
@@ -68,9 +68,9 @@ class Jabatan extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
+            'jabatan_id' => Yii::t('app', 'ID'),
             'parent' => Yii::t('app', 'Parent'),
-            'lvl' => Yii::t('app', 'Lvl'),
+
             'kode_jabatan' => Yii::t('app', 'Kode Jabatan'),
             'nama_jabatan' => Yii::t('app', 'Nama Jabatan'),
             'ket' => Yii::t('app', 'Ket'),
