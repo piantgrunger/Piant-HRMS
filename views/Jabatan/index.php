@@ -8,10 +8,11 @@ use yii\widgets\Pjax;
 use kartik\export\ExportMenu;
 
 $gridColumns=[['class' => 'yii\grid\SerialColumn'], 
-            'parent',
-            'lvl',
+            //'parent',
+          //  'lvl',
             'kode_jabatan',
             'nama_jabatan',
+            'ket', 
     
             // 'icon',
             // 'icon_type',
@@ -55,7 +56,8 @@ $this->params['breadcrumbs'][] = $this->title;
     'root'      => 'Root',                                //default parent
     'icon'      => 'user',                                  //default user
     'iconRoot'  => 'tree-conifer',                          //default tree-conifer
-    'nameFieldname'=>'nama_jabatan'          
+    'nameFieldname'=>'nama_jabatan',
+    'idFieldname' =>'id_jabatan'    
 ]); ?>
     </div> <div class ="col-sm-8">
       <?=      GridView::widget([

@@ -14,7 +14,7 @@ use kartik\select2\Select2;
         <?= $form->errorSummary($model) ?> <!-- ADDED HERE -->
 
    
-  <?= $form->field($model, 'parent')->widget(Select2::classname(), [
+  <?= $form->field($model, 'parent')->label('Atasan')->widget(Select2::classname(), [
     'data' => $dataBrowse,
     'options' => ['placeholder' => 'Pilih Parent Jabatan ...'],
     'pluginOptions' => [

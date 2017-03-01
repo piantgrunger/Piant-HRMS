@@ -40,6 +40,7 @@ class Jabatan extends \yii\db\ActiveRecord
                 // if you're using datetime instead of UNIX timestamp:
                  'value' => new Expression('NOW()'),
             ],
+            
         ];
     }
     public static function tableName()

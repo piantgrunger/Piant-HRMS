@@ -18,6 +18,8 @@ class TreeImage extends \yii\bootstrap\Widget
     public $icon = 'user';
     public $iconRoot = 'tree-conifer';
     public $nameFieldname = 'name';
+    public $idFieldname = 'id';
+    
     
     public $query;
     public function init()
@@ -25,6 +27,37 @@ class TreeImage extends \yii\bootstrap\Widget
         Assets::register($this->getView());
         $this->initTreeView(0);
     }
+    
+ public   function generate_list($array,$parent,$level)
+{
+
+  foreach ($array as $value)
+  {
+    $has_children=false;
+
+    if ($value['parent']==$parent)
+    {
+
+      if ($has_children==false)
+      {
+        $has_children=true;
+        echo '<ul>';
+      }
+
+      echo '<li>'.$value[$this->nameFieldname];
+
+      $this->generate_list($array,$value[$this->idFieldname],$level);
+
+      echo '</li>';
+    }
+
+    if ($has_children==true) echo '</ul>';
+
+   
+  }
+
+}
+    
     protected function initTreeView($parent)
     {   
         $icon1 = '<span class="glyphicon glyphicon-'.$this->icon.'"></span>';
@@ -32,6 +65,8 @@ class TreeImage extends \yii\bootstrap\Widget
         $dataArray = $this->query->asArray()->all();
         $nodeDepth = $currDepth = $counter = 0;
         echo Html::beginTag('div', ['class' => 'tree']);
+        $this->generate_list($dataArray, 0,1); 
+        /*
                 echo Html::beginTag('ul') . "\n" .Html::beginTag('li') . "\n" ;
                 echo Html::a(Yii::t('app', $iconRoot.'  '.$this->root), ['index1','parent'=>0] );   // echo '<a href="#">'.$iconRoot.'  '.$this->root.'</a>' . "\n" ;
         foreach ($dataArray as $key) {
@@ -74,6 +109,8 @@ class TreeImage extends \yii\bootstrap\Widget
             ++$currDepth;
             ++$nodeDepth;
         }
+          
+         */
         echo Html::endTag('div');
     }
 }

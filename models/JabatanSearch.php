@@ -39,7 +39,7 @@ class JabatanSearch extends Jabatan
      *
      * @return ActiveDataProvider
      */
-    public function search($params,$parent)
+    public function search($params)
     {
         $query = Jabatan::find();
 
@@ -64,9 +64,7 @@ class JabatanSearch extends Jabatan
             'updated_at' => $this->updated_at,
         ]);
         
-       $query->andFilterWhere([
-            'parent' => $parent,
-        ]);
+  
         
         $query->andFilterWhere(['like', 'kode_jabatan', $this->kode_jabatan])
             ->andFilterWhere(['like', 'nama_jabatan', $this->nama_jabatan])

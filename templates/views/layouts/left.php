@@ -34,7 +34,7 @@ $menuItems =
                                     ['label' => 'Jabatan', 'icon' => 'fa fa-circle-o', 'url' => "@web/jabatan/index",],
                                 ],
                             ],
-                           ['label' => 'Jns Absen', 'icon' => 'fa fa-circle-o', 'url' => "@web/JnsAbsen/index",],
+                           ['label' => 'Jns Absen', 'icon' => 'fa fa-circle-o', 'url' => "@web/jnsabsen/index",],
                            
                         ],
                     ],

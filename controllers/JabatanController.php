@@ -44,27 +44,12 @@ class JabatanController extends Controller
      * Lists all Jabatan models.
      * @return mixed
      */
-    public function actionIndex1($parent)
-    {
-        if ($parent === 'null')
-             $parent=0;
-        $searchModel = new JabatanSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$parent);
-        $Model = new Jabatan();
-      $dataTree = $Model->find()->orderBy('parent');
-     
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-            'dataTree' => $dataTree,
-        ]);
-    }
+  
 
     public function actionIndex()
     {
         $searchModel = new JabatanSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,0);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $Model = new Jabatan();
         $dataTree = $Model->find()->orderBy('parent');
         
