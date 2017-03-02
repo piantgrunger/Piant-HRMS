@@ -12,7 +12,7 @@ $gridColumns=[['class' => 'yii\grid\SerialColumn'],
           //  'lvl',
             'kode_jabatan',
             'nama_jabatan',
-            'ket', 
+                 'ket', 
     
             // 'icon',
             // 'icon_type',

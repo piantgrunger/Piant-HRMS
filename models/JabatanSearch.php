@@ -18,7 +18,7 @@ class JabatanSearch extends Jabatan
     public function rules()
     {
         return [
-            [['id_jabatan', 'parent' ], 'integer'],
+            [['id_jabatan', 'parent_id' ], 'integer'],
             [['kode_jabatan', 'nama_jabatan', 'ket', 'created_at', 'updated_at'], 'safe'],
         ];
     }
@@ -28,7 +28,7 @@ class JabatanSearch extends Jabatan
      */
     public function scenarios()
     {
-        // bypass scenarios() implementation in the parent class
+        // bypass scenarios() implementation in the parent_id class
         return Model::scenarios();
     }
 
@@ -39,7 +39,7 @@ class JabatanSearch extends Jabatan
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $parent_id)
     {
         $query = Jabatan::find();
 
@@ -63,6 +63,8 @@ class JabatanSearch extends Jabatan
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
+        
+         $query->andFilterWhere(['coalesce(parent_id,0)'=>$parent_id]);
         
   
         

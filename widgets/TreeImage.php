@@ -28,52 +28,57 @@ class TreeImage extends \yii\bootstrap\Widget
         $this->initTreeView(0);
     }
     
- public   function generate_list($array,$parent,$level)
+ public   function generate_list($array,$parent_id,$level)
 {
 
   foreach ($array as $value)
   {
     $has_children=false;
 
-    if ($value['parent']==$parent)
+    if ($value['parent_id']==$parent_id)
     {
 
       if ($has_children==false)
       {
         $has_children=true;
-        echo '<ul>';
+         echo Html::beginTag('ul'). "\n";
+         
       }
 
-      echo '<li>'.$value[$this->nameFieldname];
+      echo Html::beginTag('li') . "\n" ;
+      echo  Html::a(Yii::t('app',$value[$this->nameFieldname]), ['index','parent_id'=>$value[$this->idFieldname]] );
 
       $this->generate_list($array,$value[$this->idFieldname],$level);
 
-      echo '</li>';
+      echo Html::endTag('li') . "\n" ;
     }
 
-    if ($has_children==true) echo '</ul>';
+    if ($has_children==true)   
+        echo Html::endTag('ul'). "\n";
 
    
   }
 
 }
     
-    protected function initTreeView($parent)
+    protected function initTreeView($parent_id)
     {   
         $icon1 = '<span class="glyphicon glyphicon-'.$this->icon.'"></span>';
         $iconRoot = '<span class="glyphicon glyphicon-'.$this->iconRoot.'"></span>';
         $dataArray = $this->query->asArray()->all();
         $nodeDepth = $currDepth = $counter = 0;
         echo Html::beginTag('div', ['class' => 'tree']);
+       echo Html::beginTag('ul') . "\n" .Html::beginTag('li') . "\n" ;
+        echo Html::a(Yii::t('app', $iconRoot.'  '.$this->root), ['index','parent_id'=>0] );   // echo '<a href="#">'.$iconRoot.'  '.$this->root.'</a>' . "\n" ;
         $this->generate_list($dataArray, 0,1); 
         /*
                 echo Html::beginTag('ul') . "\n" .Html::beginTag('li') . "\n" ;
-                echo Html::a(Yii::t('app', $iconRoot.'  '.$this->root), ['index1','parent'=>0] );   // echo '<a href="#">'.$iconRoot.'  '.$this->root.'</a>' . "\n" ;
+                echo Html::a(Yii::t('app', $iconRoot.'  '.$this->root), ['index1','parent_id'=>0] );   // echo '<a href="#">'.$iconRoot.'  '.$this->root.'</a>' . "\n" ;
         foreach ($dataArray as $key) {
-            if ($key['parent'] == $parent ) 
+            if ($key['parent_id'] == $parent_id ) 
             {
                 echo Html::beginTag('ul') . "\n" .Html::beginTag('li') . "\n" ;
-                echo Html::a(Yii::t('app', $icon1.'  '.$key[$this->nameFieldname]), ['index1','parent'=>$key['parent']] );   // echo '<a href="#">'.$iconRoot.'  '.$this->root.'</a>' . "\n" ;
+                echo Html::a(Yii::t('app', $icon1.'  '.$key[$this->nameFieldname]), ['index1','parent_id'=>$key['parent_id']] );   // echo '<a href="#">'.$iconRoot.'  '.$this->root.'</a>' . "\n" ;
             }  else
             {
                 $as = $currDepth-1;

@@ -13,7 +13,7 @@ use yii\db\Expression;
  * This is the model class for table "tb_m_jabatan".
  *
  * @property int $jabatan_id
- * @property int $parent
+ * @property int $parent_id
  * @property int $lvl
  * @property string $kode_jabatan
  * @property string $nama_jabatan
@@ -47,6 +47,8 @@ class Jabatan extends \yii\db\ActiveRecord
     {
         return 'tb_m_jabatan';
     }
+    
+    
 
     /**
      * @inheritdoc
@@ -54,7 +56,7 @@ class Jabatan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['parent', 'lvl'], 'integer'],
+            [['parent_id', 'lvl'], 'integer'],
             [[ 'kode_jabatan', 'nama_jabatan'], 'required'],
             [['ket'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
@@ -70,7 +72,7 @@ class Jabatan extends \yii\db\ActiveRecord
     {
         return [
             'jabatan_id' => Yii::t('app', 'ID'),
-            'parent' => Yii::t('app', 'Parent'),
+            'parent_id' => Yii::t('app', 'Parent'),
 
             'kode_jabatan' => Yii::t('app', 'Kode Jabatan'),
             'nama_jabatan' => Yii::t('app', 'Nama Jabatan'),
@@ -79,4 +81,6 @@ class Jabatan extends \yii\db\ActiveRecord
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
     }
+    
+     
 }

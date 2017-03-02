@@ -46,12 +46,12 @@ class JabatanController extends Controller
      */
   
 
-    public function actionIndex()
+    public function actionIndex($parent_id=0)
     {
         $searchModel = new JabatanSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$parent_id);
         $Model = new Jabatan();
-        $dataTree = $Model->find()->orderBy('parent');
+        $dataTree = $Model->find()->orderBy('parent_id');
         
         
 
