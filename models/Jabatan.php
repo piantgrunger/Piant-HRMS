@@ -82,5 +82,17 @@ class Jabatan extends \yii\db\ActiveRecord
         ];
     }
     
+    public function beforeDelete() {
      
+        if (!Jabatan::findOne(['parent_id'=>$this->id_jabatan]))
+        {  
+            return parent::beforeDelete();
+        }
+        else {
+             Yii::$app->session->setFlash('error','Jabatan ini Tidak Bisa Dihapus Karena Memiliki Bawahan');
+            return FALSE;
+            
+        
+        }
+    }
 }
