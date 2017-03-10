@@ -19,16 +19,7 @@ class DepartemenController extends Controller
     /**
      * @inheritdoc
      */
-    public function getDataBrowseDivisi()
-    {        
-     return ArrayHelper::map(
-                                Divisi::find()
-                                        ->select([
-                                                'id_divisi','ket_divisi' => 'CONCAT(kode_divisi," - ",nama_divisi)'
-                                        ])
-                                        ->asArray()
-                                        ->all(), 'id_divisi', 'ket_divisi');
-    }
+   
     
     public function behaviors()
     {
@@ -78,7 +69,7 @@ class DepartemenController extends Controller
     public function actionCreate()
     {
         $model = new Departemen();
-        $dataBrowse = $this->getDataBrowseDivisi();
+        $dataBrowse = Divisi::getDataBrowseDivisi();
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -100,7 +91,7 @@ class DepartemenController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $dataBrowse = $this->getDataBrowseDivisi();
+        $dataBrowse = Divisi::getDataBrowseDivisi();
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

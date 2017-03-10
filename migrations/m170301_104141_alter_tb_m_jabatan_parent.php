@@ -11,9 +11,9 @@ class m170301_104141_alter_tb_m_jabatan_parent extends Migration
 
     public function down()
     {
-        echo "m170301_104141_alter_tb_m_jabatan_parent cannot be reverted.\n";
+       // echo "m170301_104141_alter_tb_m_jabatan_parent cannot be reverted.\n";
 
-        return false;
+        return true;
     }
 
     /*

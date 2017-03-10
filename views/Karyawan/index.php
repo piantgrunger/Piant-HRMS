@@ -11,7 +11,7 @@ $gridColumns=[['class' => 'yii\grid\SerialColumn'],
         'attribute' => 'foto_karyawan',
         'format' => 'html',    
         'value' => function ($data) {
-            return Html::img(str_replace('web', '', Yii::getAlias('@web')).'/uploads/'. $data['foto_karyawan'],
+            return Html::img( Yii::getAlias('@web').'/uploads/'. $data['foto_karyawan'],
                 ['width' => '70px']);
         },
           ],

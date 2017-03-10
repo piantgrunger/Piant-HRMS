@@ -7,6 +7,7 @@ use Yii;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
+use yii\helpers\ArrayHelper;
 
 
 /**
@@ -73,5 +74,16 @@ class Divisi extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+    
+     public function getDataBrowseDivisi()
+    {        
+     return ArrayHelper::map(
+                                Divisi::find()
+                                        ->select([
+                                                'id_divisi','ket_divisi' => 'CONCAT(kode_divisi," - ",nama_divisi)'
+                                        ])
+                                        ->asArray()
+                                        ->all(), 'id_divisi', 'ket_divisi');
     }
 }

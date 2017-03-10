@@ -76,7 +76,7 @@ class karyawan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['kode_karyawan', 'nama_karyawan', 'tgl_lahir', 'stat_nikah', 'agama', 'tgl_masuk', 'tgl_efektif', 'stat_karyawan', 'stat_kerja', 'stat_wna', 'id_divisi', 'id_departemen', 'id_jabatan', 'stat_serikat_pegawai'], 'required'],
+            [['kode_karyawan', 'nama_karyawan', 'tgl_lahir','jns_kelamin' ,'stat_nikah', 'agama', 'tgl_masuk', 'tgl_efektif', 'stat_karyawan', 'stat_kerja', 'stat_wna', 'id_divisi', 'id_departemen', 'id_jabatan', 'stat_serikat_pegawai'], 'required'],
             [['alamat_karyawan', 'stat_nikah', 'agama', 'stat_karyawan', 'stat_kerja', 'stat_wna', 'stat_serikat_pegawai', 'ket'], 'string'],
             [['tgl_lahir','foto_karyawan' ,'tgl_masuk', 'tgl_efektif', 'tgl_keluar', 'created_at', 'updated_at'], 'safe'],
             [['id_divisi', 'id_departemen', 'id_seksi', 'id_jabatan'], 'integer'],

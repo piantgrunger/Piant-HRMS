@@ -35,6 +35,7 @@ $menuItems =
                                 ],
                             ],
                            ['label' => 'Jns Absen', 'icon' => 'fa fa-circle-o', 'url' => "@web/jnsabsen/index",],
+                           ['label' => 'Karyawan', 'icon' => 'fa fa-circle-o', 'url' => "@web/karyawan/index",],
                            
                         ],
                     ],

@@ -8,6 +8,7 @@ use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 use app\models\Divisi;
+use yii\helpers\ArrayHelper;
 
 
 /**
@@ -105,5 +106,15 @@ class Departemen extends \yii\db\ActiveRecord
     {
         return $this->divisi->id_divisi;
     }
-    
+    public function getDataBrowseDepartemen()
+    {        
+     return ArrayHelper::map(
+                     Departemen::find()
+                                        ->select([
+                                                'id_departemen','ket_departemen' => 'CONCAT(kode_departemen," - ",nama_departemen)','nama_divisi'
+                                        ])
+                                        ->join('left join','tb_m_divisi',['tb_m_divisi.id_divisi'=>'tb_m_departemen.id_divisi'])   
+                                        ->asArray()
+                                        ->all(), 'id_departemen', 'ket_departemen','nama_divisi');
+    }
 }

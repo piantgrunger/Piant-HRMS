@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'nama_karyawan',
           [
     'attribute'=>'foto_karyawan',
-    'value'=>  str_replace('web', '', Yii::getAlias('@web'))   .'/uploads/'.$model->foto_karyawan,
+    'value'=>  Yii::getAlias('@web').'/uploads/'.$model->foto_karyawan,
     'format' => ['image',['width'=>'100','height'=>'100']],
 ],
             'alamat_karyawan:ntext',

@@ -119,5 +119,7 @@ class Seksi extends \yii\db\ActiveRecord
     {
         return $this->departemen->id_divisi;
     }
+    
+    
 }
        

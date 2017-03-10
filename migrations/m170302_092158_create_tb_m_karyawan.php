@@ -20,6 +20,7 @@ class m170302_092158_create_tb_m_karyawan extends Migration
             'no_id' => $this->string(50),
             'tempat_lahir' => $this->string(50),
             'tgl_lahir' => $this->date()->notNull(),
+            'jns_kelamin'=> "Enum('Laki-Laki','Perempuan') NOT NULL "   , 
             'stat_nikah'=> "Enum('Menikah','Belum Menikah','Janda','Duda') NOT NULL "   , 
             'agama'=>"Enum('Islam','Kristen Protestan','Kristen Katolik','Hindu','Budha','Konghocu') NOT NULL "  ,
             

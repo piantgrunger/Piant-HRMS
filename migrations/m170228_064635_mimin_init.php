@@ -24,10 +24,10 @@ class m170228_064635_mimin_init extends Migration
 
 	public function down()
 	{
-		echo "m151024_072453_create_route_table cannot be reverted.\n";
+		//echo "m151024_072453_create_route_table cannot be reverted.\n";
 
-		$this->dropTable('{{%route}}');
-		return false;
+		//$this->dropTable('{{%route}}');
+		return true;
 	}
 
 	/*

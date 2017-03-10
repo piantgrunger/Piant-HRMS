@@ -20,17 +20,7 @@ class SeksiController extends Controller
      * @inheritdoc
      */
     
-     public function getDataBrowseDepartemen()
-    {        
-     return ArrayHelper::map(
-                     Departemen::find()
-                                        ->select([
-                                                'id_departemen','ket_departemen' => 'CONCAT(kode_departemen," - ",nama_departemen)','nama_divisi'
-                                        ])
-                                        ->join('left join','tb_m_divisi',['tb_m_divisi.id_divisi'=>'tb_m_departemen.id_divisi'])   
-                                        ->asArray()
-                                        ->all(), 'id_departemen', 'ket_departemen','nama_divisi');
-    }
+
     public function behaviors()
     {
         return [
@@ -78,7 +68,7 @@ class SeksiController extends Controller
     public function actionCreate()
     {
         $model = new Seksi();
-        $dataBrowse = $this->getDataBrowseDepartemen();
+        $dataBrowse = Departemen::getDataBrowseDepartemen();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_seksi]);
@@ -99,7 +89,7 @@ class SeksiController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $dataBrowse = $this->getDataBrowseDepartemen();
+        $dataBrowse = Departemen::getDataBrowseDepartemen();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_seksi]);

@@ -27,7 +27,11 @@ use yii\bootstrap\Tabs;
             ],
             [
                 'label' => 'Data Organisasi',
-                'content' => $this->render('_form_organisasi', ['model' => $model, 'form' => $form]),
+                'content' => $this->render('_form_organisasi', ['model' => $model, 'form' => $form, 
+                'dataDivisi'=>$dataDivisi,
+                'dataDepartemen'=>$dataDepartemen
+                
+            ]),
             ],
         ]]);
  ?>   

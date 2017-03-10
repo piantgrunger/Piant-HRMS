@@ -73,14 +73,21 @@ class KaryawanController extends Controller
             $model->foto_karyawan = $model->kode_karyawan.'.'.$picture->extension;        
 
             if  ($model->save()) {
-          
-               $picture->saveAs(Yii::$app->basePath .'/uploads/'.$model->foto_karyawan);     
+          if (!is_null($picture)) 
+             {     
+                $picture->saveAs(Yii::$app->basePath .'/web/uploads/'.$model->foto_karyawan);     
+             }   
              return $this->redirect(['view', 'id' => $model->id_karyawan]);
             }
           
         } else {
+            $dataDivisi= \app\models\Divisi::getDataBrowseDivisi();
+            $dataDepartemen= \app\models\Departemen::getDataBrowseDepartemen();
             return $this->render('create', [
                 'model' => $model,
+                'dataDivisi'=>$dataDivisi,
+                'dataDepartemen'=>$dataDepartemen
+                
             ]);
         }
     }
@@ -99,13 +106,21 @@ class KaryawanController extends Controller
             $picture = UploadedFile::getInstance($model,'foto_karyawan' );
             $model->foto_karyawan = $model->kode_karyawan.'.'.$picture->extension;    
         if  ($model->save()) {
-             $picture->saveAs(Yii::$app->basePath .'/uploads/'.$model->foto_karyawan);     
+             if (!is_null($picture)) 
+             {     
+              $picture->saveAs(Yii::$app->basePath. '/web/uploads/'.$model->foto_karyawan);     
+             }
              return $this->redirect(['view', 'id' => $model->id_karyawan]);
            }    
         } 
          else {
+            $dataDivisi= \app\models\Divisi::getDataBrowseDivisi();
+            $dataDepartemen= \app\models\Departemen::getDataBrowseDepartemen();
             return $this->render('update', [
                 'model' => $model,
+                'dataDivisi'=>$dataDivisi,
+                'dataDepartemen'=>$dataDepartemen
+                
             ]);
         }
     }

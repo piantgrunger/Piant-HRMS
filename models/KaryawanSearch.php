@@ -74,6 +74,7 @@ class KaryawanSearch extends Karyawan
 
         $query->andFilterWhere(['like', 'kode_karyawan', $this->kode_karyawan])
             ->andFilterWhere(['like', 'nama_karyawan', $this->nama_karyawan])
+            ->andFilterWhere(['like', 'jns_kelamin', $this->jns_kelamin])
             ->andFilterWhere(['like', 'foto_karyawan', $this->foto_karyawan])
             ->andFilterWhere(['like', 'alamat_karyawan', $this->alamat_karyawan])
             ->andFilterWhere(['like', 'telp_karyawan', $this->telp_karyawan])
